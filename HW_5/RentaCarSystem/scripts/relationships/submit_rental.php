@@ -10,9 +10,9 @@ $stmt = $conn->prepare($query);
 $stmt->bind_param("iss", $customer_id, $car_vin, $rent_date);
 
 if ($stmt->execute()) {
-    header("Location: ../feedback_rental_success.html");
+    header("Location: ../../feedback/feedback_rents.php?success=true");
 } else {
-    echo "Error: " . $stmt->error;
+    header("Location: ../../feedback/feedback_rents.php?error=" . urlencode($stmt->error));
 }
 $stmt->close();
 $conn->close();

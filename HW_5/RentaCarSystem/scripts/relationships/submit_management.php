@@ -9,9 +9,9 @@ $stmt = $conn->prepare($query);
 $stmt->bind_param("ii", $employee_id, $customer_id);
 
 if ($stmt->execute()) {
-    header("Location: ../feedback_management_success.html");
+    header("Location: ../../feedback/feedback_manages.php?success=true");
 } else {
-    echo "Error: " . $stmt->error;
+    header("Location: ../../feedback/feedback_manages.php?error=" . urlencode($stmt->error));
 }
 $stmt->close();
 $conn->close();

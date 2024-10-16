@@ -9,9 +9,9 @@ $stmt = $conn->prepare($query);
 $stmt->bind_param("sd", $name, $salary);
 
 if ($stmt->execute()) {
-    header("Location: ../../feedback/feedback_employee.php?success=true");
+    header("Location: ../feedback_employee_success.html");
 } else {
-    header("Location: ../../feedback/feedback_employee.php?error=" . urlencode($stmt->error));
+    echo "Error: " . $stmt->error;
 }
 $stmt->close();
 $conn->close();

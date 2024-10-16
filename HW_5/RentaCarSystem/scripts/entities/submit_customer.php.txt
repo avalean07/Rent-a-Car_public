@@ -1,5 +1,5 @@
 <?php
-include 'db_connect.php';
+include 'db_connect.php'; // Ensure you have a file that sets up your DB connection.
 
 $name = htmlspecialchars($_POST['name']);
 $credit_score = filter_var($_POST['credit_score'], FILTER_VALIDATE_INT);
@@ -10,9 +10,9 @@ $stmt = $conn->prepare($query);
 $stmt->bind_param("sii", $name, $credit_score, $years_of_experience);
 
 if ($stmt->execute()) {
-    header("Location: ../../feedback/feedback_customer.php?success=true");
+    header("Location: ../feedback_customer_success.html");
 } else {
-    header("Location: ../../feedback/feedback_customer.php?error=" . urlencode($stmt->error));
+    echo "Error: " . $stmt->error;
 }
 $stmt->close();
 $conn->close();

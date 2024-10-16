@@ -8,9 +8,9 @@ $stmt = $conn->prepare($query);
 $stmt->bind_param("s", $car_vin);
 
 if ($stmt->execute()) {
-    header("Location: ../../feedback/feedback_automobile.php?success=true");
+    header("Location: ../feedback_automobile_success.html");
 } else {
-    header("Location: ../../feedback/feedback_automobile.php?error=" . urlencode($stmt->error));
+    echo "Error: " . $stmt->error;
 }
 $stmt->close();
 $conn->close();

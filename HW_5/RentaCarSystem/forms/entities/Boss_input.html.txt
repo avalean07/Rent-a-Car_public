@@ -1,0 +1,16 @@
+<!-- boss_input.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add/Update Boss</title>
+</head>
+<body>
+    <h1>Add/Update Boss</h1>
+    <form action="submit_boss.php" method="post">
+        Employee ID: <input type="number" name="employee_id" required><br>
+        <input type="submit" value="Submit">
+    </form>
+    <a href="maintenance.html">Back to Maintenance Page</a>
+</body>
+</html>

@@ -9,9 +9,9 @@ $stmt = $conn->prepare($query);
 $stmt->bind_param("is", $employee_id, $certifications);
 
 if ($stmt->execute()) {
-    header("Location: ../../feedback/feedback_mechanic.php?success=true");
+    header("Location: ../feedback_mechanic_success.html");
 } else {
-    header("Location: ../../feedback/feedback_mechanic.php?error=" . urlencode($stmt->error));
+    echo "Error: " . $stmt->error;
 }
 $stmt->close();
 $conn->close();

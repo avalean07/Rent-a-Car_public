@@ -9,9 +9,9 @@ $stmt = $conn->prepare($query);
 $stmt->bind_param("is", $mechanic_id, $car_vin);
 
 if ($stmt->execute()) {
-    header("Location: ../feedback_fix_success.html");
+    header("Location: ../../feedback/feedback_fixes.php?success=true");
 } else {
-    echo "Error: " . $stmt->error;
+    header("Location: ../../feedback/feedback_fixes.php?error=" . urlencode($stmt->error));
 }
 $stmt->close();
 $conn->close();

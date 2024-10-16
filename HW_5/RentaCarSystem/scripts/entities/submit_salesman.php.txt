@@ -10,9 +10,9 @@ $stmt = $conn->prepare($query);
 $stmt->bind_param("is", $employee_id, $sales_region);
 
 if ($stmt->execute()) {
-    header("Location: ../../feedback/feedback_salesman.php?success=true");
+    header("Location: ../feedback_salesman_success.html");
 } else {
-    header("Location: ../../feedback/feedback_salesman.php?error=" . urlencode($stmt->error));
+    echo "Error: " . $stmt->error;
 }
 $stmt->close();
 $conn->close();
