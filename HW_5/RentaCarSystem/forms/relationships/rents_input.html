@@ -1,0 +1,22 @@
+<!-- rents_input.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Manage Customer Rentals</title>
+</head>
+<body>
+    <h1>Manage Customer Rentals</h1>
+    <form action="../../scripts/relationships/submit_rental.php" method="post">
+        Customer: <select name="customer_id">
+            <!-- Server-populated list of customers -->
+        </select><br>
+        Automobile: <select name="car_vin">
+            <!-- Server-populated list of automobiles -->
+        </select><br>
+        Rent Date: <input type="date" name="rent_date" required><br>
+        <input type="submit" value="Submit">
+    </form>
+    <a href="../../maintenance.html">Back to Maintenance Page</a>
+</body>
+</html>
