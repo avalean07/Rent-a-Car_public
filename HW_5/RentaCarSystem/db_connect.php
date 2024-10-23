@@ -2,7 +2,7 @@
 $servername = "5.75.1182.107";//we don't know the server name yet
 $username = "vgheorghe";
 $password = "baietiigrei";
-$dbname = "tables_code.sql";
+$dbname = "vgheorghe_db";
 
 try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
