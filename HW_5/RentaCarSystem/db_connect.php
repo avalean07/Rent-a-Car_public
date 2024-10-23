@@ -1,7 +1,7 @@
 <?php
 $servername = "5.75.1182.107";//we don't know the server name yet
 $username = "vgheorghe";
-$password = "baietiigrei";
+$password = "ONRVSl";
 $dbname = "vgheorghe_db";
 
 try {
