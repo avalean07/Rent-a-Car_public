@@ -1,13 +1,17 @@
 <?php
 function parse_line($line)//function for parsing the apache file
 {
-    $pattern = '/(\S+) (\S+) (\S+) \[([\w:\/]+\s[+\-]\d{4})\] "(\S+) (\S+) HTTP\/\d\.\d" (\d{3}) (\d+) "([^"]+)" "([^"]+)"/';
+    $pattern = '/(\S+) (\S+) (\S+) 
+
+\[([\w:\/]+\s[+\-]\d{4})\]
+
+ "(\S+) (\S+) HTTP\/\d\.\d" (\d{3}) (\d+) "([^"]+)" "([^"]+)"/';
     preg_match($pattern, $line, $matches);
-    if(!matches)
+    if(!$matches)
     {
         return false;
     }//incase the log is not an actual log
-    return{
+    return [
         'ip' => $matches[1],
         'datetime' => $matches[4],
         'request_method' => $matches[5],
@@ -15,20 +19,21 @@ function parse_line($line)//function for parsing the apache file
         'status' => $matches[7],
         'response_size' => $matches[8],
         'referrer' => $matches[9],
-        'user_agent' => $matches[10]
-    };//found that this is the correct order of the apache log on stackoverflow
+        'user_agent' => $matches[10],
+        'website_identifier' => 'ADR' 
+    ];
 }
 
-function analyze_logs($file_path)
+function analyze_logs($file_path, $unique_identifier)
 {
-    $page_access = [];
-    $handle = fopne($file_path, "r");
+    $page_accesses = [];
+    $handle = fopen($file_path, "r");
     if($handle)
     {
-        while(($line = fgets($handle)) != false)
+        while(($line = fgets($handle)) !== false)
         {
             $data = parse_line($line);
-            if($data)
+            if($data && $data['website_identifier'] === $unique_identifier)
             {
                 if(isset($page_accesses[$data['path']]))
                 {
@@ -50,16 +55,12 @@ function analyze_logs($file_path)
     return $page_accesses;
 }
 
-$file_path = '';//bro, what is the file log?
-$results = analyze_logs($file_path); 
-$page_accesses = analyze_logs($file_path);
+$file_path = '/var/log/apache2/other_vhosts_access.log';
+$unique_identifier = 'plm'; 
+$results = analyze_logs($file_path, $unique_identifier); 
 
 echo "<h2>Page Accesses</h2>";
 echo"<pre>";
-print_r($results['page_accesses']);
-echo "</pre>";
-echo "<h2>Error Logs</h2>";
-echo "<pre>";
-print_r($results["errors"]);
+print_r($results);
 echo "</pre>";
 ?>
