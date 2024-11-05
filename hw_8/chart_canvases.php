@@ -21,6 +21,7 @@
         const accessData = <?php echo json_encode($results['page_accesses']); ?>;
         const errorData = <?php echo json_encode($results['errors']); ?>;
         //the PHP part should be handled within PHP tags and echo'd as JSON encoded strings, but it says I have errors
+        //ok it works, I had a syntax error
 
         const accessLabels = Object.keys(accessData);
         const accessCounts = Object.values(accessData);
