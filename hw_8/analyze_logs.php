@@ -55,7 +55,7 @@ function analyze_logs($file_path, $unique_identifier)
     return $page_accesses;
 }
 
-$file_path = '/var/log/apache2/access.log.1';
+$file_path = '/var/log/apache2/';
 $unique_identifier = 'plm'; 
 $results = analyze_logs($file_path, $unique_identifier); 
 

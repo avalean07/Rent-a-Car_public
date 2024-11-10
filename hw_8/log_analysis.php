@@ -18,8 +18,8 @@
     </div>
 
     <script>
-        const accessData = <?php echo json_encode($results['page_accesses']); ?>;
-        const errorData = <?php echo json_encode($results['errors']); ?>;
+        const accessData = <?php echo json_encode($results['access.log']); ?>;
+        const errorData = <?php echo json_encode($results['error.log']); ?>;
         //the PHP part should be handled within PHP tags and echo'd as JSON encoded strings, but it says I have errors
 
         const accessLabels = Object.keys(accessData);

@@ -13,8 +13,8 @@
 
     <script>
         
-    const accessData = JSON.parse('<?php echo json_encode($GLOBALS['accessLogs']); ?>');
-    const errorData = JSON.parse('<?php echo json_encode($GLOBALS['errorLogs']); ?>');
+    const accessData = JSON.parse('<?php echo json_encode($GLOBALS['access.log']); ?>');
+    const errorData = JSON.parse('<?php echo json_encode($GLOBALS['error.log']); ?>');
 
     const accessChartContext = document.getElementById('accessChart').getContext('2d');
     const errorChartContext = document.getElementById('errorChart').getContext('2d');
