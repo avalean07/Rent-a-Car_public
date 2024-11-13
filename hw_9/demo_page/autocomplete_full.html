@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>autocomplete demo</title>
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.3/themes/smoothness/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.3/jquery-ui.js"></script>
+</head>
+<body>
+ 
+<label for="autocomplete">Select Customer: </label>
+<input id="autocomplete">
+ 
+<script>
+$( "#autocomplete" ).autocomplete({
+  source: ["Lebron James", "Joe Mama", "Ben Dover", "Jack Mehoff", "Michael Jackson", "Speed Lover", "Speed Lover Jr."]
+});
+</script>
+ 
+</body>
+</html>

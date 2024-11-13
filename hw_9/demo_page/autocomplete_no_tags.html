@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autocomplete Demo</title>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.3/themes/smoothness/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.3/jquery-ui.min.js"></script>
+</head>
+<body>
+    <h1>Demo:</h1>
+    <label for="autocomplete">Select a programming language:</label>
+    <input id="autocomplete">
+
+    <script>
+        $(document).ready(function() {//for calling the server, like on the provided website
+            $.ajax({
+                url: "get_tags.php",
+                method: "GET",
+                dataType: "json",
+                success: function(data) {
+                    $("#autocomplete").autocomplete({
+                        source: data
+                    });
+                },
+                error: function() {
+                    console.error("Error fetching autocomplete data from the server.");
+                }
+            });
+        });
+        //we made it use the tags stored in another separate folder. works very well. 
+    //we could put the tags in here as well, doesn't really matter
+    </script>
+</body>
+</html>
