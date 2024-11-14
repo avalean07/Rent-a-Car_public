@@ -1,20 +1,24 @@
 <?php
-include '../../db_connect.php';
-$employee_id = $_GET['employee_id'];
+include '../../db_connect.php'; // Ensure your database connection details are secure and correct
 
-$query = "SELECT * FROM Employee WHERE employee_id = ?";
-$stmt = $conn->prepare($query);
-$stmt->bind_param("i", $employee_id);
-$stmt->execute();
-$result = $stmt->get_result();
+$employee_id = isset($_GET['employee_id']) ? (int)$_GET['employee_id'] : 0;
 
-if ($row = $result->fetch_assoc()) {
-    echo "<h1>Mechanic Details: " . $row['name'] . "</h1>";
-    echo "<p>Employee ID: " . $row['employee_id'] . "</p>";
-    echo "<p>Specializations: " . $row['specialization'] . "</p>";
+if ($employee_id > 0) {
+    $stmt = $conn->prepare("SELECT * FROM Employee WHERE employee_id = ?");
+    $stmt->bind_param("i", $employee_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($row = $result->fetch_assoc()) {
+        echo "<h1>Mechanic Details: " . htmlspecialchars($row['name']) . "</h1>";
+        echo "<p>Employee ID: " . $row['employee_id'] . "</p>";
+        echo "<p>Specializations: " . htmlspecialchars($row['specialization']) . "</p>";
+    } else {
+        echo "<p>Mechanic not found.</p>";
+    }
+    $stmt->close();
 } else {
-    echo "<p>Mechanic not found.</p>";
+    echo "<p>Invalid mechanic ID.</p>";
 }
-$stmt->close();
 $conn->close();
 ?>

@@ -223,8 +223,7 @@ JOIN Automobile ON MechanicFixesAutomobile.car_vin = Automobile.car_vin
 WHERE MechanicFixesAutomobile.mechanic_id = 2;
 --=2 because that's the id I have it above
 
---and now, ahhhh, this is a hard one to be done only by one team member
---but here is a pretty specific sort, I hope the person grading this appreciates it
+--here is a pretty specific sort, I hope the person grading this appreciates it
 
 SELECT Customer.name AS customer_name, Automobile.car_vin,
     CASE 
