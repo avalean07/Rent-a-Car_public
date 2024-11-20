@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Location Map</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <!--we took the link of the leaflet webside and referenced it-->
+    <style>
+        #map { height: 400px; width: 100%; }
+    </style>
+</head>
+<body>
+    <h1>User Location Map</h1>
+    <div id="map"></div>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $.getJSON('https://ipinfo.io?token=1f7c45ced48ea1', function(data) 
+            {
+                var location = data.loc.split(',');
+                var lat = parseFloat(location[0]);
+                var lon = parseFloat(location[1]);
+                //this if for fetching the user's ip location data and interpreting it on the map
+
+                var map = L.map('map').setView([lat, lon], 13);//initializing the map
+
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '© OpenStreetMap contributors'
+                }).addTo(map);//this is the Open Street Map tile layer
+
+                var marker = L.marker([lat, lon]).addTo(map);//this is for the marker on the map
+                marker.bindPopup('<b>Your IP:</b> ' + data.ip).openPopup();
+            });
+        });
+    </script>
+</body>
+</html>

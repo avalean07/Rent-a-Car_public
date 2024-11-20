@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<form action="authenticate.php" method="post">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" required>
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required>
+    <button type="submit">Login</button>
+</form>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maintenance - Rent-A-Car System</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
+        <img src="img/rent-a-car-logo.png" alt="Rent-A-Car Logo" id="logo">
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="imprint.html">Imprint</a></li>
+                <li><a href="maintenance.html">Maintenance</a></li>
+                <!-- new link for the log analysis-->
+                <li><a href="log_analysis.php">View Log Analysis</a></li>
+                <!-- newly added page for assignment 10-->
+                <li><a href="user_map.html">User Map</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1>System Maintenance</h1>
+        <ul>
+            <li><a href="forms/entities/customer_input.html">Add/Update Customer</a></li>
+            <li><a href="forms/entities/automobile_input.html">Add/Update Automobile</a></li>
+            <li><a href="forms/entities/employee_input.html">Add/Update Employee</a></li>
+            <li><a href="forms/entities/salesman_input.html">Add/Update Salesman</a></li>
+            <li><a href="forms/entities/mechanic_input.html">Add/Update Mechanic</a></li>
+            <li><a href="forms/entities/boss_input.html">Add/Update Boss</a></li>
+            <li><a href="forms/relationships/rents_input.html">Manage Customer Rentals</a></li>
+            <li><a href="forms/relationships/fixes_input.html">Record Mechanic Repairs</a></li>
+            <li><a href="forms/relationships/manages_input.html">Manage Customer Relationships</a></li>
+        </ul>
+    </main>
+    <footer>
+        <p>© 2024 My Rent-a-Car System. All rights reserved.</p>
+    </footer>
+</body>
+</html>
